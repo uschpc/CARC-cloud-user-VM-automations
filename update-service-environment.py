@@ -24,11 +24,11 @@ def getnodeIP(i):
 
 def main():
   nodeIPlist = []
-  serviceshow = ['onegate', 'service', 'show', '--json']
+  serviceshow = ['sudo', 'onegate', 'service', 'show', '--json']
   serviceresult = subprocess.run(serviceshow, stdout=subprocess.PIPE).stdout.decode('utf-8')
   nodeID = getnodeID(serviceresult)
   for node in nodeID:
-    vmshow = ['onegate', 'vm', 'show', node, '--json']
+    vmshow = ['sudo', 'onegate', 'vm', 'show', node, '--json']
     vmresult = subprocess.run(vmshow, stdout=subprocess.PIPE).stdout.decode('utf-8')
     nodeIPlist.append(getnodeIP(vmresult))
 
